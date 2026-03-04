@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 Activity Banks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Modal Transitions */
+        .modal-enter { opacity: 0; }
+        .modal-enter-active { opacity: 1; transition: opacity 0.3s ease-out; }
+        .modal-scale-enter { transform: scale(0.95); opacity: 0; }
+        .modal-scale-enter-active { transform: scale(1); opacity: 1; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- 頂部標題區塊 -->
+    <header class="bg-indigo-600 text-white shadow-lg sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold tracking-tight flex items-center justify-center gap-3">
+                <i class="ph-fill ph-graduation-cap text-4xl text-yellow-300"></i> Level 2 Activity Banks
+            </h1>
+            <p class="mt-2 text-indigo-200 text-sm md:text-base">For A2 Level | 15–20 minutes | Click a card to read</p>
+        </div>
+        
+        <!-- 導覽列 -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex space-x-1 overflow-x-auto no-scrollbar pb-2" aria-label="Tabs" id="tabs">
+                <button onclick="switchTab('vocabulary')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg bg-white text-indigo-700 hover:bg-indigo-50 transition-colors whitespace-nowrap active-tab" data-target="vocabulary">
+                    <i class="ph ph-text-aa text-lg"></i> Vocabulary
+                </button>
+                <button onclick="switchTab('grammar')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="grammar">
+                    <i class="ph ph-brackets-curly text-lg"></i> Grammar
+                </button>
+                <button onclick="switchTab('conversation')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="conversation">
+                    <i class="ph ph-chats text-lg"></i> Conversation
+                </button>
+                <button onclick="switchTab('reading')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="reading">
+                    <i class="ph ph-book-open-text text-lg"></i> Reading
+                </button>
+                <button onclick="switchTab('comprehensive')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="comprehensive">
+                    <i class="ph ph-puzzle-piece text-lg"></i> All Skills
+                </button>
+                <button onclick="switchTab('listening')" class="tab-btn w-full flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold rounded-t-lg text-indigo-100 hover:bg-indigo-500 hover:text-white transition-colors whitespace-nowrap" data-target="listening">
+                    <i class="ph ph-headphones text-lg"></i> Listening
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- ================= VOCABULARY ================= -->
+        <section id="vocabulary" class="tab-content active">
+            <div class="mb-6 border-l-4 border-indigo-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Vocabulary Games</h2>
+                <p class="text-slate-500">Learn new words and practice memory skills.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-indigo-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span>
+                        <h3 class="text-lg font-bold game-title group-hover:text-indigo-600 transition-colors">Flyswatter</h3>
+                    </div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Identify words quickly.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students race to swat the correct vocabulary words on the board.</p>
+                    <div class="mt-4 text-xs font-bold text-indigo-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        Read more <i class="ph-bold ph-arrow-right"></i>
+                    </div>
+                    <div class="hidden game-materials">2 clean flyswatters, whiteboard markers.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Write about 15 vocabulary words randomly on the whiteboard.</li>
+                            <li>Divide the class into two teams.</li>
+                            <li>Ask one student from each team to stand at the front. Give them a flyswatter.</li>
+                            <li>Call out a word or describe it clearly.</li>
+                            <li>The first student to swat the correct word wins a point for their team.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">If your students are confident, do not just say the word. Instead, give them a clue or a definition so they have to think more.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-indigo-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span>
+                        <h3 class="text-lg font-bold game-title group-hover:text-indigo-600 transition-colors">Draw or Act</h3>
+                    </div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Express words creatively.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">One student draws or acts out a word while their team tries to guess it.</p>
+                    <div class="mt-4 text-xs font-bold text-indigo-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Word cards, whiteboard markers.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Divide the class into teams.</li>
+                            <li>One student picks a word card and goes to the front.</li>
+                            <li>They have to draw the word on the board or act it out, but they cannot speak.</li>
+                            <li>Their team has one minute to guess the word correctly.</li>
+                            <li>If they guess it, they earn a point.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Remind students that they cannot write letters or numbers on the board when drawing. They can only draw pictures.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-indigo-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-indigo-600 transition-colors">Bingo</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Practice listening and spelling.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students listen to the words you call out and mark them on their grids.</p>
+                    <div class="mt-4 text-xs font-bold text-indigo-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Paper, pens, a list of vocabulary words.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Write 15 to 20 words on the board.</li>
+                            <li>Ask students to draw a 3x3 grid on their paper.</li>
+                            <li>They can choose any 9 words from the board and write them in their grid.</li>
+                            <li>Call out the words randomly. Students cross them out.</li>
+                            <li>The first student to cross out three words in a line shouts "Bingo!".</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Always ask the winner to read their three words out loud to check their answers.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-indigo-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-indigo-600 transition-colors">Hot Potato</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Recall words under pressure.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students pass a ball around the circle and say a word before the timer goes off.</p>
+                    <div class="mt-4 text-xs font-bold text-indigo-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A soft ball, a timer (on a phone).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Ask all students to stand in a big circle.</li>
+                            <li>Set a timer on your phone for about 30 seconds, but hide it.</li>
+                            <li>Give a soft ball to one student.</li>
+                            <li>They must say a vocabulary word and quickly pass the ball to the next person.</li>
+                            <li>The person holding the ball when the timer rings loses the round.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Keep the timer hidden from the students. The game is much more exciting because they do not know when the time will stop.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-indigo-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-indigo-600 transition-colors">Snowball Fight</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Ice-breaker and reading.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students write words on paper, crumple them up, and throw them like snowballs.</p>
+                    <div class="mt-4 text-xs font-bold text-indigo-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Scrap paper, pens.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give each student a piece of scrap paper.</li>
+                            <li>Ask them to write three vocabulary words on it.</li>
+                            <li>Tell them to crumple the paper tightly into a ball.</li>
+                            <li>Say "Start!" and let them throw the snowballs at each other for 30 seconds.</li>
+                            <li>Say "Stop!" and have everyone pick up one snowball to read the words aloud.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Make a strict rule that they cannot aim at anyone's face. This game is perfect for waking up sleepy students.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-indigo-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-indigo-600 transition-colors">Guess the Word</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Describe vocabulary.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students describe a hidden word using simple clues without saying the actual word.</p>
+                    <div class="mt-4 text-xs font-bold text-indigo-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Word cards.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Ask two students to come to the front.</li>
+                            <li>Student A looks at the board, and Student B looks at the class.</li>
+                            <li>Write a word on the board.</li>
+                            <li>Student A gives simple clues (like colors or opposites) without saying the target word.</li>
+                            <li>Student B tries to guess it based on the clues.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Encourage students to use full sentences for their clues, like "It is a red fruit" instead of just saying "red".</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-indigo-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-indigo-600 transition-colors">Match Game</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Memory and association.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students take turns flipping cards to find matching pairs of pictures and words.</p>
+                    <div class="mt-4 text-xs font-bold text-indigo-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Picture cards, word cards, magnets.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Stick picture cards and word cards face down on the board.</li>
+                            <li>Divide the class into teams.</li>
+                            <li>A team chooses two cards to turn over.</li>
+                            <li>If the picture and the word match, they read the word and keep the cards.</li>
+                            <li>If they do not match, turn them face down again.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Write numbers on the backs of the cards so students can easily tell you which cards they want to turn over.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-indigo-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-indigo-100 text-indigo-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-indigo-600 transition-colors">Word Relay</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Search and spell quickly.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Teams race to find and circle hidden words on the whiteboard.</p>
+                    <div class="mt-4 text-xs font-bold text-indigo-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Whiteboard, 2 markers.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Write a large grid of random letters on the board and hide vocabulary words inside it.</li>
+                            <li>Divide the students into two lines.</li>
+                            <li>Say "Go!" and the first student in each line runs to the board to circle one hidden word.</li>
+                            <li>They run back and pass the marker to the next student.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Write a list of the hidden words next to the grid. Students can cross them out after they find them.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= GRAMMAR ================= -->
+        <section id="grammar" class="tab-content">
+            <div class="mb-6 border-l-4 border-rose-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Grammar Games</h2>
+                <p class="text-slate-500">Practice word order and sentence structure.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-rose-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-rose-600 transition-colors">Make a Sentence</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Reorder mixed words.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Groups work together to arrange mixed-up words into correct sentences.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Word cards, envelopes.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Cut a sentence into separate words and put them in an envelope.</li>
+                            <li>Divide the class into small groups and give each group an envelope.</li>
+                            <li>When you say "Go!", they open it and arrange the words in the correct order.</li>
+                            <li>The first group to read the correct sentence aloud wins.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Use different colored paper for different sentences. This makes it easy to find lost pieces if they fall on the floor.</div>
+                </div>
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-rose-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-rose-600 transition-colors">Find Someone</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Ask specific questions.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students walk around and ask their classmates specific questions to complete a worksheet.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Worksheet, pens.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give each student a worksheet with statements like "Likes to eat pizza".</li>
+                            <li>Students have to walk around the classroom and ask their classmates questions.</li>
+                            <li>They ask, "Do you like to eat pizza?".</li>
+                            <li>If someone says "Yes", they write that person's name on their paper.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Tell students they must speak English. They are not allowed to just pass the paper and ask friends to sign it quietly.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-rose-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-rose-600 transition-colors">Tic-Tac-Toe</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Accuracy in grammar.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Teams must make a grammatically correct sentence to place an X or O on the board.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Whiteboard, markers.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Draw a 3x3 grid on the board and write a target word in each box.</li>
+                            <li>Divide the class into Team X and Team O.</li>
+                            <li>A team chooses a box and must make a grammatically correct sentence using that word.</li>
+                            <li>If the sentence is perfect, they get to place their X or O.</li>
+                            <li>The first team to get 3 in a row wins.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">You must be strict as the teacher. If they forget an 's' or an article like 'a', they do not get the box.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-rose-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-rose-600 transition-colors">Board Race</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Write quickly and correctly.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Relay race where students run to the board to write complete and correct sentences.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Whiteboard, 2 markers.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Divide the whiteboard into two halves and make two teams.</li>
+                            <li>Tell them a grammar rule, like "Write a negative sentence".</li>
+                            <li>One student from each team runs to the board and writes a complete sentence.</li>
+                            <li>The first team with a 100% correct sentence wins a point.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Remind students to use capital letters at the beginning of the sentence and a period at the end.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-rose-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-rose-600 transition-colors">Question Ball</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Answer in full sentences.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students toss a ball to each other and practice asking and answering questions.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A soft ball.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Ask students to stand in a circle.</li>
+                            <li>Throw a soft ball to a student and ask them a target question, like "What did you do yesterday?".</li>
+                            <li>The student must answer with a full sentence.</li>
+                            <li>Then, they throw the ball to another friend and ask them a new question.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Write the question structure and the answer pattern on the board so students can look at it if they forget.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-rose-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-rose-600 transition-colors">Buy the Sentence</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Identify grammar mistakes.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Teams use play money to 'buy' sentences they believe have correct grammar.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Fake money, whiteboard.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Write 10 sentences on the board. Make sure some are correct and some have mistakes.</li>
+                            <li>Give each team some fake money.</li>
+                            <li>Read the sentences one by one and let the teams bid on the sentences they think are correct.</li>
+                            <li>The team that buys the most correct sentences wins.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Give the teams two minutes to discuss the sentences together before the auction begins.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-rose-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-rose-600 transition-colors">Long Sentence</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Expand sentence length.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students take turns adding one word to build a very long and funny sentence.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">None.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Start the game by saying a short phrase, like "I bought...".</li>
+                            <li>The first student adds one word: "I bought a...".</li>
+                            <li>The next student adds another word: "I bought a shirt...".</li>
+                            <li>Continue around the room to see how long the sentence can get before someone makes a mistake.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Write the words on the whiteboard as the students say them. This visual help makes the game much easier.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-rose-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-rose-600 transition-colors">Stand in Line</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Physical sentence building.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students hold word cards and physically stand in order to form a correct sentence.</p>
+                    <div class="mt-4 text-xs font-bold text-rose-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Big pieces of paper, markers.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Write one word of a sentence on a large piece of paper.</li>
+                            <li>Give one paper to each student in a group.</li>
+                            <li>Tell them they need to stand in a line to form a correct sentence.</li>
+                            <li>When they believe they are in the correct order, they read the sentence aloud together.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">To make it more challenging, give one student a paper with a period or a question mark on it.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONVERSATION ================= -->
+        <section id="conversation" class="tab-content">
+            <div class="mb-6 border-l-4 border-amber-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Conversation Games</h2>
+                <p class="text-slate-500">Practice speaking with confidence and fluency.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-amber-600 transition-colors">Speed Talking</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Improve speaking fluency.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students talk with a partner for one minute, then rotate to talk with someone new.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A timer.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Divide the class into two circles: an inside circle and an outside circle.</li>
+                            <li>Students face each other. Give them a topic and let them talk for one minute.</li>
+                            <li>When you say "Change!", the outside circle moves one step to the right.</li>
+                            <li>They start a new conversation with their new partner.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Playing soft background music can help students feel more relaxed and less shy when speaking.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-amber-600 transition-colors">Missing Info</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Exchange information.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Partners ask each other questions to find the missing information on their worksheets.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Partner A and Partner B worksheets.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Put students in pairs (Student A and Student B).</li>
+                            <li>Give them similar worksheets, but each sheet has different information missing.</li>
+                            <li>They must ask each other questions to find the missing answers.</li>
+                            <li>They cannot look at their partner's paper.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Place a tall book or a folder standing up between the students so they cannot cheat and look at the other paper.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-amber-600 transition-colors">Roleplay Cards</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Simulate real life.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students practice real-life situations like talking to a doctor or shopping for clothes.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Scenario cards.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give each pair of students a scenario card, such as "Ordering food in a restaurant".</li>
+                            <li>Give them a few minutes to practice a conversation together.</li>
+                            <li>Ask them to come to the front of the classroom.</li>
+                            <li>They must act out their conversation for the class.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Bring simple props to class! Using a hat, a jacket, or a toy phone makes the roleplay much more fun.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-amber-600 transition-colors">Find the Lie</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Speak and verify facts.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students share three facts about themselves, but one is a lie. The class guesses the lie.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Paper, pens.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Ask students to write down three sentences about themselves.</li>
+                            <li>Two sentences must be true, and one must be a lie.</li>
+                            <li>A student reads their three sentences aloud to the class.</li>
+                            <li>The rest of the class can ask a few questions to guess which statement is the lie.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Tell students to make their lies sound realistic. If they write "I live on the moon", the game will be too easy.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-amber-600 transition-colors">Find Your Match</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Interactive speaking.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students mingle and talk to find the classmate who has the matching half of their card.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Dialogue cards cut in half.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Cut dialogue cards into two pieces (Question and Answer). Give one piece to each student.</li>
+                            <li>Students have to walk around the room and speak their lines to their classmates.</li>
+                            <li>When they find the person with the matching response, they sit down together.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Make a strict rule that they cannot show their cards to anyone. They must rely entirely on their speaking and listening skills.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-amber-600 transition-colors">Pull a Block</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Spontaneous answers.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students play Jenga. When they pull a block, they answer the matching question.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Jenga game with numbers, a list of numbered questions.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Write numbers from 1 to 30 on the blocks of a Jenga game.</li>
+                            <li>Give the students a list of numbered questions.</li>
+                            <li>When a student carefully pulls out a block, they must look at the number.</li>
+                            <li>They find the matching question on the list and answer it aloud.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Mix up the questions! Include some easy grammar questions and some funny personal questions to keep it interesting.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-amber-600 transition-colors">Be a Star</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Ask continuous questions.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">One student pretends to be famous, and the other students act as reporters asking questions.</p>
+                    <div class="mt-4 text-xs font-bold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Role cards (Singer, Actor, Athlete).</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Choose one student to pretend to be a famous person. They sit at the front of the classroom.</li>
+                            <li>The other students act as reporters at a press conference.</li>
+                            <li>The reporters have two minutes to ask the star as many questions as possible.</li>
+                            <li>The star answers creatively, then you switch roles.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Teach the reporters how to say "Follow-up question!" to make the game feel more like a real interview.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-amber-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-amber-600 transition-colors">The "Why" Game</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Explain reasons clearly.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students try to keep a conversation going by constantly asking their partner "Why?".</p>
+                    <div class="mt-4 text-xs font-bold text-amber-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">None.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Put students in pairs.</li>
+                            <li>Student A makes a simple statement, like "I like the weekend".</li>
+                            <li>Student B simply asks, "Why?". Student A must provide a reason.</li>
+                            <li>Student B asks "Why?" again, and Student A must give another reason.</li>
+                            <li>They continue until Student A cannot answer.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">This game usually gets very silly. Encourage them to laugh and enjoy the activity while they practice giving reasons.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= READING ================= -->
+        <section id="reading" class="tab-content">
+            <div class="mb-6 border-l-4 border-teal-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Reading Games</h2>
+                <p class="text-slate-500">Improve comprehension and reading speed.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-teal-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-teal-600 transition-colors">Jigsaw Reading</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Share information.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Each student reads a different part of a story and explains it to their group.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A story cut into 3 or 4 parts.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Cut a short story into three or four paragraphs.</li>
+                            <li>Divide the class into small groups and give each student a different paragraph.</li>
+                            <li>They read their part silently.</li>
+                            <li>Then, they take turns explaining their part to the group so everyone understands the whole story.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Make sure the paragraphs have a clear chronological order, like morning, afternoon, and evening, so it is easy to assemble.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-teal-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-teal-600 transition-colors">Run and Read</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Remember sentences.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">One student runs to read a text, remembers it, and dictates it to their partner.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Short text taped to the wall, paper, pens.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Tape a short text to the wall outside the classroom.</li>
+                            <li>Put students in pairs: one Runner and one Writer.</li>
+                            <li>The Runner goes to the text, memorizes a sentence, runs back, and dictates it to the Writer.</li>
+                            <li>The first team to write the text perfectly wins.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Remind the Writers that they should ask questions like "How do you spell that?" if they are not sure.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-teal-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-teal-600 transition-colors">Read and Draw</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Understand details.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students read a descriptive text and draw a picture based on what they read.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Descriptive sentences on paper, colored pencils.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give students a descriptive paragraph, such as "There is a blue house with two trees next to it".</li>
+                            <li>Students read the text quietly by themselves.</li>
+                            <li>They must draw a picture that includes every detail mentioned in the text.</li>
+                            <li>Compare the drawings at the end.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Use prepositions of place (under, next to, behind) and specific colors to test their reading comprehension carefully.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-teal-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-teal-600 transition-colors">Sentence Match</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Connect ideas logically.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students read and connect the beginning of a sentence to its logical ending.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Worksheets with split sentences.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Create a worksheet where the beginnings of sentences are on the left side, and the endings are mixed up on the right side.</li>
+                            <li>Students must read both sides.</li>
+                            <li>They draw a line to connect the parts that make logical sense together.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">To review the answers, ask one student to read the first half loudly, and another student to read the second half.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-teal-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-teal-600 transition-colors">True or False</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Read and decide fast.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students read a short text quickly and race to sit on the "True" or "False" chair.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">2 chairs, whiteboard/projector.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Place two chairs at the front of the room and label them "True" and "False".</li>
+                            <li>Project a short story on the whiteboard.</li>
+                            <li>Ask a question about the text.</li>
+                            <li>Two students must quickly read the text, decide the answer, and run to sit on the correct chair.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Use synonyms in your questions. If the text says "happy", ask if the character is "glad" to make them think harder.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-teal-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-teal-600 transition-colors">Story Order</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Understand story sequences.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Groups work together to put the mixed-up sentences of a story in the correct order.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A story cut into separate sentence strips.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Cut a short story into individual sentence strips.</li>
+                            <li>Give a mixed-up set of strips to small groups of students.</li>
+                            <li>They need to read all the sentences.</li>
+                            <li>They work together to arrange them in the correct logical order from top to bottom.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Choose stories that use clear transition words like "First", "Then", "Next", and "Finally" to help students understand the sequence.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-teal-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-teal-600 transition-colors">Find It Fast</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Scan text efficiently.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students scan a reading passage quickly to find specific target words or numbers.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Printed reading passages.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give every student a copy of the same reading passage.</li>
+                            <li>Call out a specific word or number loudly.</li>
+                            <li>Students must scan the text as fast as they can without reading every word.</li>
+                            <li>The first student to point at the word and read the sentence out loud wins a point.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Start the game by asking them to find capital letters or years, like "London" or "2022", because they stand out visually.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-teal-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-teal-600 transition-colors">Missing Word</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Use context clues.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students use context clues to choose the correct word from a list to fill in the blanks.</p>
+                    <div class="mt-4 text-xs font-bold text-teal-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Worksheet with blank spaces, word bank.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give students a short story with several blank spaces. Provide a list of words at the top.</li>
+                            <li>Students must read the sentences carefully.</li>
+                            <li>They use context clues to choose the correct word from the list to fill in each blank space.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Complete the first blank space together as a class. Explain how looking at the words before and after the blank can help them guess.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ALL SKILLS ================= -->
+        <section id="comprehensive" class="tab-content">
+            <div class="mb-6 border-l-4 border-fuchsia-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">All Skills Review</h2>
+                <p class="text-slate-500">Combine reading, writing, listening, and speaking.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-fuchsia-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-600 transition-colors">Point Game</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Review everything.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">A fun quiz game where teams answer different types of English questions to win points.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Whiteboard with categories.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Draw a large grid on the board with categories like Vocabulary, Grammar, and Reading.</li>
+                            <li>Assign point values from 100 to 300.</li>
+                            <li>Teams take turns choosing a category. Ask them a question.</li>
+                            <li>If they answer correctly, they win the points for their team.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Make the 300-point questions genuinely challenging. Keep the score updated clearly on the board to keep the competition exciting.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-fuchsia-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-600 transition-colors">Table Rotation</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Practice independently.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Groups rotate around the classroom to complete different reading, writing, and speaking tasks.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">4 tables prepared with different activities.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Set up four tables in the classroom with a different task at each table (Reading, Writing, Listening, Speaking).</li>
+                            <li>Divide the students into four groups.</li>
+                            <li>Give them five minutes to work at their table.</li>
+                            <li>When you ring a bell, they must rotate to the next table.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Make sure the instructions on each table are very clear so you do not have to explain the rules every time they switch.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-fuchsia-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-600 transition-colors">Board Game</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Learn while playing.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students roll dice and complete English challenges to move their pieces across the board.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Printed board games, dice, game pieces.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Print a simple board game and give one to each small group of students. Provide dice.</li>
+                            <li>Students roll the dice and move their pieces.</li>
+                            <li>They must successfully complete the English task written on the square they land on to stay there.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Encourage students to help each other. Peer learning is a great way for them to practice outside of direct teacher instruction.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-fuchsia-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-600 transition-colors">Plan a Party</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Collaborate using English.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Groups collaborate to plan a party by writing lists, making invitations, and discussing ideas.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Paper, colored pens.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Tell the groups they need to plan a fun class party.</li>
+                            <li>They have to work together to write a shopping list for food and discuss which games to play.</li>
+                            <li>They also need to design a party invitation.</li>
+                            <li>Finally, they present their party plan to the rest of the class.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Write a clear checklist on the whiteboard so students know exactly what they need to finish before the time is up.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-fuchsia-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-600 transition-colors">Escape Room</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Solve puzzles together.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Teams solve English puzzles hidden in envelopes to 'escape' the classroom and win.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Envelopes containing different worksheets.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Put an English puzzle in an envelope.</li>
+                            <li>When a team solves the first puzzle, they give you the answer to get the second envelope.</li>
+                            <li>They must solve four envelopes in total.</li>
+                            <li>The first team to finish all the puzzles 'escapes' the room and wins the game.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">If a group is completely stuck on a puzzle, let them sing a short English song to earn a helpful hint from the teacher.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-fuchsia-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-600 transition-colors">The Shop</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Practice practical conversations.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students practice buying and selling items using play money and simple negotiation phrases.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Fake money, picture cards.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Half of the class act as shopkeepers selling items on picture cards.</li>
+                            <li>The other half are buyers with fake money and a shopping list.</li>
+                            <li>Buyers walk around the room, ask for prices, and buy items.</li>
+                            <li>After ten minutes, have the students swap roles.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Teach them useful phrases for bargaining before you start, such as "That is too expensive!" or "Can I have a discount?".</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-fuchsia-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-600 transition-colors">Pass the Story</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Write creatively.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students write one sentence, pass their paper, and build a funny story together.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Paper, pens.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Ask every student to write the beginning sentence of a story at the top of a piece of paper.</li>
+                            <li>Say "Pass!" and students hand their paper to the person next to them.</li>
+                            <li>They read the sentence and add one more.</li>
+                            <li>Repeat this five times, then read the stories aloud.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Give them a funny prompt to start the activity, for example, "A giant alien walked into the supermarket yesterday".</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-fuchsia-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-fuchsia-100 text-fuchsia-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-fuchsia-600 transition-colors">Relay Race</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Complete tasks quickly.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Teams race to the front of the class to answer questions on a comprehensive worksheet.</p>
+                    <div class="mt-4 text-xs font-bold text-fuchsia-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Worksheets.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Place a comprehensive worksheet on a desk at the front of the classroom.</li>
+                            <li>Put students into teams in lines at the back.</li>
+                            <li>The first student runs to the front, answers only one question on the paper, and runs back to tag their teammate.</li>
+                            <li>The first team to finish the paper correctly wins.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Tape the worksheet securely to the desk so it does not fly away when students are rushing back and forth.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LISTENING ================= -->
+        <section id="listening" class="tab-content">
+            <div class="mb-6 border-l-4 border-sky-500 pl-4">
+                <h2 class="text-2xl font-bold text-slate-800">Listening Games</h2>
+                <p class="text-slate-500">Train students to catch important information.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-sky-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</span><h3 class="text-lg font-bold game-title group-hover:text-sky-600 transition-colors">Listen & Draw</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Understand descriptions.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students listen to the teacher's description and try to draw exactly what they hear.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Paper, pens.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Describe a strange or funny picture slowly and clearly, like "Draw a monster with three arms and a big hat".</li>
+                            <li>Students must listen carefully and draw what they hear without looking at their classmates' papers.</li>
+                            <li>Show them your original picture at the end to compare.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Use familiar vocabulary like colors, body parts, and prepositions to make sure they can focus on listening rather than guessing words.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-sky-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</span><h3 class="text-lg font-bold game-title group-hover:text-sky-600 transition-colors">Up and Down</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Listen for specific categories.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students listen to a list of words and stand up or sit down when they hear specific categories.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">A prepared list of words.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Assign a physical rule to the class, for example, "Stand up when you hear an animal, and sit down when you hear a color".</li>
+                            <li>Read a list of words or a short story aloud.</li>
+                            <li>Students must physically react as soon as they hear the target words.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Start reading slowly, and then gradually increase your speed. This makes the game much more challenging and fun.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-sky-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</span><h3 class="text-lg font-bold game-title group-hover:text-sky-600 transition-colors">Grab the Card</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Process audio quickly.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students listen carefully and race to slap the correct picture card on the table.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Picture cards spread on a table.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Place several vocabulary picture cards face up on a table.</li>
+                            <li>Put students in small groups around the table.</li>
+                            <li>Call out a word clearly.</li>
+                            <li>The first student to slap their hand on the correct picture card gets to keep it. The student with the most cards wins.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Tell students to keep their hands on their heads before you say the word to prevent them from hovering their hands over the cards.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-sky-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</span><h3 class="text-lg font-bold game-title group-hover:text-sky-600 transition-colors">The Telephone</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Practice pronunciation and listening.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students whisper a sentence down a line to see if the final message matches the original.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Target sentences.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Have students sit in a straight line or a circle.</li>
+                            <li>Whisper a sentence to the first student.</li>
+                            <li>That student whispers it to the next person. They can only say it once!</li>
+                            <li>The last student in line says the sentence out loud to see if it matches the original.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Use sentences with words that sound similar or funny tongue twisters to make the listening task more difficult and entertaining.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-sky-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">5</span><h3 class="text-lg font-bold game-title group-hover:text-sky-600 transition-colors">Listen & Color</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Follow detailed instructions.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students listen to instructions and color specific parts of a picture accordingly.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Printed pictures, colored pencils.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give every student the same black-and-white coloring page.</li>
+                            <li>Give them verbal instructions, like "Color the boy's shoes red".</li>
+                            <li>Students must listen to your instructions and color the specific parts of the picture correctly.</li>
+                            <li>Check their pictures afterwards.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Wait about ten seconds between each instruction to give the students enough time to find the right colored pencil and color the area.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-sky-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">6</span><h3 class="text-lg font-bold game-title group-hover:text-sky-600 transition-colors">Simon Says</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Listen for a key phrase.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students must listen carefully and only follow the instructions if they hear "Simon says".</p>
+                    <div class="mt-4 text-xs font-bold text-sky-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">None.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give the class physical commands. If you say "Simon says touch your nose", they must do it.</li>
+                            <li>If you only say "Touch your nose" without saying "Simon says", they must stand still.</li>
+                            <li>Anyone who does the action at the wrong time is out of the game.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">To trick the students, perform the wrong action while giving a command, like touching your ear while saying "touch your nose".</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-sky-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">7</span><h3 class="text-lg font-bold game-title group-hover:text-sky-600 transition-colors">Song Blanks</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Understand spoken English in songs.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students listen to a popular English song and try to fill in the missing words on their paper.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Song lyrics with blanks, music player.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Print out the lyrics to a popular English song, but leave several blank spaces.</li>
+                            <li>Play the song for the class.</li>
+                            <li>Students must listen carefully and try to write the missing words in the blanks.</li>
+                            <li>Review the answers together and sing the song.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Choose acoustic or slower pop songs. Fast rap or rock songs are usually too difficult for A2 students to understand clearly.</div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-sm border border-slate-100 p-6 hover:shadow-lg hover:border-sky-300 hover:-translate-y-1 transition-all cursor-pointer relative" onclick="openModal(this)">
+                    <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-600 w-8 h-8 rounded-full flex items-center justify-center font-bold">8</span><h3 class="text-lg font-bold game-title group-hover:text-sky-600 transition-colors">Follow the Map</h3></div>
+                    <p class="text-sm font-semibold text-emerald-600 mb-2">Goal: Follow spatial directions.</p>
+                    <p class="text-sm text-slate-500 line-clamp-2">Students listen to directions and trace the route on a map to find the secret destination.</p>
+                    <div class="mt-4 text-xs font-bold text-sky-500 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">Read more <i class="ph-bold ph-arrow-right"></i></div>
+                    <div class="hidden game-materials">Printed maps for each student.</div>
+                    <div class="hidden game-steps">
+                        <ol class="list-decimal list-outside ml-4 space-y-2">
+                            <li>Give each student a printed street map. Tell them to put their finger on the starting point.</li>
+                            <li>Give them directions aloud, such as "Go straight and turn left at the park".</li>
+                            <li>Students follow the route on the map and shout out their final destination when you stop.</li>
+                        </ol>
+                    </div>
+                    <div class="hidden game-tips">Draw a large version of the map on the whiteboard. After the game, show them the correct path so they can see if they made a mistake.</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 彈出視窗 (Modal Background Overlay) -->
+    <div id="gameModal" class="fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4 backdrop-blur-sm hidden" onclick="closeModalOnOutsideClick(event)">
+        <!-- 彈出視窗內容區 (Modal Content Container) -->
+        <div id="modalContent" class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col transform transition-transform duration-300 scale-95 opacity-0">
+            
+            <!-- 彈出視窗標題 (Modal Header) -->
+            <div class="bg-white px-6 py-4 border-b border-slate-100 flex justify-between items-center sticky top-0 z-10">
+                <h2 id="modalTitle" class="text-2xl font-bold text-slate-800 tracking-tight">Game Title</h2>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-rose-500 hover:bg-rose-50 p-2 rounded-full transition-colors outline-none focus:ring-2 focus:ring-rose-200">
+                    <i class="ph ph-x text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- 彈出視窗主體 (Modal Body Scrollable) -->
+            <div class="p-6 overflow-y-auto space-y-6">
+                <!-- 材料區塊 (Materials Section) -->
+                <div>
+                    <h4 class="text-lg font-bold flex items-center gap-2 text-indigo-600 mb-2 border-b border-indigo-100 pb-1">
+                        <i class="ph-fill ph-toolbox text-xl"></i> Materials
+                    </h4>
+                    <p id="modalMaterials" class="text-slate-700 leading-relaxed pl-1"></p>
+                </div>
+                
+                <!-- 步驟區塊 (Steps Section) -->
+                <div>
+                    <h4 class="text-lg font-bold flex items-center gap-2 text-emerald-600 mb-2 border-b border-emerald-100 pb-1">
+                        <i class="ph-fill ph-list-numbers text-xl"></i> Steps
+                    </h4>
+                    <div id="modalSteps" class="text-slate-700 leading-relaxed pl-1"></div>
+                </div>
+                
+                <!-- 提示區塊 (Tips Section) -->
+                <div>
+                    <h4 class="text-lg font-bold flex items-center gap-2 text-amber-500 mb-2 border-b border-amber-100 pb-1">
+                        <i class="ph-fill ph-lightbulb text-xl"></i> Tips
+                    </h4>
+                    <div class="bg-amber-50 rounded-xl p-4 border border-amber-200 shadow-inner">
+                        <p id="modalTips" class="text-amber-900 leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 彈出視窗底部 (Modal Footer) -->
+            <div class="bg-slate-50 px-6 py-4 border-t border-slate-100 flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 outline-none">
+                    Got it!
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript 邏輯 (JavaScript Logic) -->
+    <script>
+        // 分頁切換邏輯 (Tab switching logic)
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'text-indigo-700', 'active-tab');
+                btn.classList.add('text-indigo-100', 'hover:bg-indigo-500', 'hover:text-white');
+            });
+            document.getElementById(tabId).classList.add('active');
+            const activeBtn = document.querySelector(`.tab-btn[data-target="${tabId}"]`);
+            activeBtn.classList.remove('text-indigo-100', 'hover:bg-indigo-500', 'hover:text-white');
+            activeBtn.classList.add('bg-white', 'text-indigo-700', 'active-tab');
+            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // 彈出視窗邏輯 (Modal logic)
+        const modal = document.getElementById('gameModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openModal(cardElement) {
+            // 從卡片中取得隱藏資料 (Get hidden data from the card)
+            const title = cardElement.querySelector('.game-title').innerText;
+            const materials = cardElement.querySelector('.game-materials').innerHTML;
+            const steps = cardElement.querySelector('.game-steps').innerHTML;
+            const tips = cardElement.querySelector('.game-tips').innerHTML;
+
+            // 填入視窗內容 (Populate Modal)
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMaterials').innerHTML = materials;
+            document.getElementById('modalSteps').innerHTML = steps;
+            document.getElementById('modalTips').innerHTML = tips;
+
+            // 顯示視窗並加入動畫 (Show Modal with animation)
+            modal.classList.remove('hidden');
+            // 防止背景滑動 (Prevent background scrolling)
+            document.body.style.overflow = 'hidden'; 
+            
+            // 觸發動畫 (Trigger animation)
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            // 隱藏動畫 (Hide animation)
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            
+            // 動畫結束後隱藏 DOM (Hide DOM after animation)
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // 恢復背景滑動 (Restore background scrolling)
+            }, 300);
+        }
+
+        // 點擊背景關閉視窗 (Close modal on outside click)
+        function closeModalOnOutsideClick(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
